@@ -9,9 +9,9 @@ class ResultActivity : AppCompatActivity() {
 
     private lateinit var textViewResultado: TextView
     private lateinit var buttonVolver: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var resultLabel = resources.getString(R.string.result_label)
         setContentView(R.layout.activity_result)
 
         textViewResultado = findViewById(R.id.textViewResultado)
@@ -19,7 +19,7 @@ class ResultActivity : AppCompatActivity() {
 
         val resultado = intent.getDoubleExtra("resultado", 0.0)
 
-        textViewResultado.text = "Resultado: $resultado"
+        "$resultLabel $resultado".also { textViewResultado.text = it }
 
         buttonVolver.setOnClickListener {
             finish()

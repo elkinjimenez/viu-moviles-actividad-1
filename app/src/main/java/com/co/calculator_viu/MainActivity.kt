@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import net.objecthunter.exp4j.ExpressionBuilder
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +47,17 @@ class MainActivity : AppCompatActivity() {
                 // Change this to send it to another activity...
                 textOperations.text = "Error: ${exception.message.toString()}"
             }
+        }
+
+        findViewById<Button>(R.id.btn_language).setOnClickListener {
+            val config = resources.configuration
+            if (config.locale == Locale.US) {
+                config.locale = Locale("es")
+            } else {
+                config.locale = Locale.US
+            }
+            resources.updateConfiguration(config, resources.displayMetrics)
+            recreate()
         }
     }
 

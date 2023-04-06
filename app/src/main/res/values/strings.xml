@@ -14,4 +14,6 @@
     <string name="_3" translatable="false">3</string>
     <string name="_0" translatable="false">0</string>
     <string name="btn_back">volver</string>
+    <string name="btn_language" translatable="false">en/es</string>
+    <string name="result_label">Resultado: </string>
 </resources>
