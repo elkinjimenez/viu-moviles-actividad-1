@@ -2,4 +2,18 @@
 <resources>
     <string name="app_name">Calculadora VIU</string>
     <string name="btn_clear">Borrar</string>
+    <string name="_7" translatable="false">7</string>
+    <string name="_8" translatable="false">8</string>
+    <string name="_9" translatable="false">9</string>
+    <string name="_4" translatable="false">4</string>
+    <string name="_5" translatable="false">5</string>
+    <string name="_6" translatable="false">6</string>
+    <string name="x" translatable="false">x</string>
+    <string name="_1" translatable="false">1</string>
+    <string name="_2" translatable="false">2</string>
+    <string name="_3" translatable="false">3</string>
+    <string name="_0" translatable="false">0</string>
+    <string name="btn_back">volver</string>
+    <string name="btn_language" translatable="false">en/es</string>
+    <string name="result_label">Resultado: </string>
 </resources>

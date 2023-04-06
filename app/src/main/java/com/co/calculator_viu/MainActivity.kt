@@ -1,5 +1,6 @@
 package com.co.calculator_viu
 
+import android.content.Intent
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import net.objecthunter.exp4j.ExpressionBuilder
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,7 +43,9 @@ class MainActivity : AppCompatActivity() {
                         val expression = textOperations.text.toString().replace("x".toRegex(), "*")
                         val resp = evalExpression(expression)
                         // Change this to send it to another activity...
-                        textOperations.text = resp.toString()
+                        val intent = Intent(this, ResultActivity::class.java)
+                        intent.putExtra("resultado", resp)
+                        startActivity(intent)
                     }
                 } else {
                     showToast("Operación incompleta para procesar")
@@ -50,6 +54,17 @@ class MainActivity : AppCompatActivity() {
                 // Change this to send it to another activity...
                 showToast("Error: ${exception.message.toString()}")
             }
+        }
+
+        findViewById<Button>(R.id.btn_language).setOnClickListener {
+            val config = resources.configuration
+            if (config.locale == Locale.US) {
+                config.locale = Locale("es")
+            } else {
+                config.locale = Locale.US
+            }
+            resources.updateConfiguration(config, resources.displayMetrics)
+            recreate()
         }
     }
 
