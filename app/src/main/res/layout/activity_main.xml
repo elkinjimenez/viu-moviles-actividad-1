@@ -195,13 +195,12 @@
 
         <Button
             android:id="@+id/btnDelete"
-            style="@style/BtnStyle"
+            style="@style/BtnAccent"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginHorizontal="8dp"
             android:layout_weight="1"
-            android:onClick="calculator"
-            android:text="D" />
+            android:drawableLeft="@drawable/backspace"/>
 
         <Button
             android:id="@+id/btn0"
@@ -215,7 +214,7 @@
 
         <Button
             android:id="@+id/btnDecimal"
-            style="@style/BtnStyle"
+            style="@style/BtnAccent"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginHorizontal="8dp"
@@ -253,7 +252,7 @@
             android:layout_height="80dp"
             android:layout_marginHorizontal="8dp"
             android:layout_weight="2"
-            android:text="clear" />
+            android:text="@string/btn_clear" />
 
         <Button
             android:id="@+id/btnEqual"
@@ -262,7 +261,6 @@
             android:layout_height="80dp"
             android:layout_marginHorizontal="8dp"
             android:layout_weight="2"
-            android:onClick="calculator"
             android:text="=" />
     </LinearLayout>
 
