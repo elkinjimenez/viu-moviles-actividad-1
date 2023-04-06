@@ -1,5 +1,6 @@
 package com.co.calculator_viu
 
+import android.content.Intent
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -36,7 +37,9 @@ class MainActivity : AppCompatActivity() {
                         val expression = textOperations.text.toString().replace("x".toRegex(), "*")
                         val resp = evalExpression(expression)
                         // Change this to send it to another activity...
-                        textOperations.text = resp.toString()
+                        val intent = Intent(this, ResultActivity::class.java)
+                        intent.putExtra("resultado", resp)
+                        startActivity(intent)
                     }
                 }
             } catch (exception: ArithmeticException) {
