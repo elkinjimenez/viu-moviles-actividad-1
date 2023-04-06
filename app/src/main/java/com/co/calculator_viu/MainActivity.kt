@@ -5,29 +5,34 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var textOperations: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        textOperations = findViewById<TextView>(R.id.textOperations)
+
         findViewById<Button>(R.id.btnDelete).setOnClickListener {
-            var textOperations: TextView = findViewById<TextView>(R.id.textOperations)
             if (textOperations.text.toString().isNotEmpty()) {
                 textOperations.text =
                     textOperations.text.dropLast(if (textOperations.text.last() == ' ') 3 else 1)
+            } else {
+                showToast("No hay nada que borrar")
             }
         }
 
         findViewById<Button>(R.id.btnClear).setOnClickListener {
-            var textOperations: TextView = findViewById<TextView>(R.id.textOperations)
             textOperations.text = ""
         }
 
         findViewById<Button>(R.id.btnEqual).setOnClickListener {
-            var textOperations: TextView = findViewById<TextView>(R.id.textOperations)
+            textOperations = findViewById<TextView>(R.id.textOperations)
             try {
                 var lastSplit = textOperations.text.toString().split(" ").last()
                 //Checks that if the last value in the list is empty or is a point, it does not perform the mathematical operation.
@@ -38,10 +43,12 @@ class MainActivity : AppCompatActivity() {
                         // Change this to send it to another activity...
                         textOperations.text = resp.toString()
                     }
+                } else {
+                    showToast("Operación incompleta para procesar")
                 }
             } catch (exception: ArithmeticException) {
                 // Change this to send it to another activity...
-                textOperations.text = "Error: ${exception.message.toString()}"
+                showToast("Error: ${exception.message.toString()}")
             }
         }
     }
@@ -51,9 +58,15 @@ class MainActivity : AppCompatActivity() {
         var textOperations: TextView = findViewById<TextView>(R.id.textOperations)
         var lastSplit = textOperations.text.toString().split(" ").last()
         // Checks that if the button pressed is a mathematical operator and the last value of the list is empty or a point, it does not allow adding the typed field.
-        if (isOperator(valueBtn) && (lastSplit == "" || lastSplit == ".")) return
+        if (isOperator(valueBtn) && (lastSplit == "" || lastSplit == ".")) {
+            showToast("No se pueden agregar dos operadores seguidos")
+            return
+        }
         // Checks that if the button pressed is a point and the last value in the list is a point, it does not allow adding the typed field.
-        if (valueBtn == "." && lastSplit.contains(".")) return
+        if (valueBtn == "." && lastSplit.contains(".")) {
+            showToast("El número ya tiene su separador de decimales")
+            return
+        }
         textOperations.text =
             textOperations.text.toString() + (if (isOperator(valueBtn)) " $valueBtn " else valueBtn)
     }
@@ -65,6 +78,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun isOperator(value: String): Boolean {
         return value == "+" || value == "-" || value == "x" || value == "/"
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 }
