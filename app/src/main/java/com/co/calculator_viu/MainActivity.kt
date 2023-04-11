@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                 textOperations.text =
                     textOperations.text.dropLast(if (textOperations.text.last() == ' ') 3 else 1)
             } else {
-                showToast("No hay nada que borrar")
+                showToast(getString(R.string.error_errase))
             }
         }
 
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 } else {
-                    showToast("Operación incompleta para procesar")
+                    showToast(getString(R.string.error_incomplete))
                 }
             } catch (exception: ArithmeticException) {
                 // Change this to send it to another activity...
@@ -74,12 +74,12 @@ class MainActivity : AppCompatActivity() {
         var lastSplit = textOperations.text.toString().split(" ").last()
         // Checks that if the button pressed is a mathematical operator and the last value of the list is empty or a point, it does not allow adding the typed field.
         if (isOperator(valueBtn) && (lastSplit == "" || lastSplit == ".")) {
-            showToast("No se pueden agregar dos operadores seguidos")
+            showToast(getString(R.string.error_two_operators))
             return
         }
         // Checks that if the button pressed is a point and the last value in the list is a point, it does not allow adding the typed field.
         if (valueBtn == "." && lastSplit.contains(".")) {
-            showToast("El número ya tiene su separador de decimales")
+            showToast(getString(R.string.error_has_separator))
             return
         }
         textOperations.text =

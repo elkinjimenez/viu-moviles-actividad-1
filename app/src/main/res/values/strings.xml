@@ -13,7 +13,11 @@
     <string name="_2" translatable="false">2</string>
     <string name="_3" translatable="false">3</string>
     <string name="_0" translatable="false">0</string>
-    <string name="btn_back">volver</string>
+    <string name="btn_shared">Compartir</string>
     <string name="btn_language" translatable="false">en/es</string>
     <string name="result_label">Resultado: </string>
+    <string name="error_incomplete">Operación incompleta para procesar</string>
+    <string name="error_two_operators">No se pueden agregar dos operadores seguidos</string>
+    <string name="error_has_separator">El número ya tiene su separador de decimales</string>
+    <string name="error_errase">No hay nada que borrar</string>
 </resources>

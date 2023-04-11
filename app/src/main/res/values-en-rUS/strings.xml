@@ -2,6 +2,10 @@
 <resources>
     <string name="app_name">Calculator VIU</string>
     <string name="btn_clear">Clear</string>
-    <string name="btn_back">Return</string>
+    <string name="btn_shared">Share</string>
     <string name="result_label">Result: </string>
+    <string name="error_incomplete">Incomplete operation to process</string>
+    <string name="error_two_operators">Cannot add two operators in a row</string>
+    <string name="error_has_separator">The number already has its decimal separator</string>
+    <string name="error_errase">There is nothing to delete</string>
 </resources>
