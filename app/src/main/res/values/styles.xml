@@ -7,6 +7,12 @@
         <item name="android:textSize">28dp</item>
         <item name="android:backgroundTint">#0D25AE</item>
     </style>
+    <style name="BtnLanguage">
+        <item name="android:textSize">20dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+    </style>
     <style name="BtnDanger">
         <item name="android:textSize">28dp</item>
         <item name="android:backgroundTint">#B60000</item>
