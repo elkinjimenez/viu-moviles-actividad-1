@@ -9,7 +9,7 @@ import android.widget.TextView
 
 class ResultActivity : AppCompatActivity() {
 
-    private lateinit var textViewResultado: TextView
+    private lateinit var textViewResult: TextView
     private lateinit var btnShare: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,17 +20,17 @@ class ResultActivity : AppCompatActivity() {
         var resultLabel = resources.getString(R.string.result_label)
         setContentView(R.layout.activity_result)
 
-        textViewResultado = findViewById(R.id.textViewResultado)
+        textViewResult = findViewById(R.id.textViewResult)
         btnShare = findViewById(R.id.btnShare)
 
         val resultado = intent.getDoubleExtra("resultado", 0.0)
 
-        "$resultLabel $resultado".toString().replace(".0", "").also { textViewResultado.text = it }
+        "$resultLabel $resultado".toString().replace(".0", "").also { textViewResult.text = it }
 
         btnShare.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
-            intent.putExtra(Intent.EXTRA_TEXT, textViewResultado.text)
+            intent.putExtra(Intent.EXTRA_TEXT, textViewResult.text)
             startActivity(Intent.createChooser(intent, getString(R.string.btn_shared)))
         }
     }

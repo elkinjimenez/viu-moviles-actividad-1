@@ -21,12 +21,12 @@ class MainActivity : AppCompatActivity() {
         textOperations = findViewById<TextView>(R.id.textOperations)
 
         findViewById<Button>(R.id.btnDelete).setOnClickListener {
-            if (textOperations.text.toString().isNotEmpty()) {
+            if (textOperations.text.toString().isNotEmpty())
                 textOperations.text =
                     textOperations.text.dropLast(if (textOperations.text.last() == ' ') 3 else 1)
-            } else {
+            else
                 showToast(getString(R.string.error_errase))
-            }
+
         }
 
         findViewById<Button>(R.id.btnClear).setOnClickListener {
@@ -42,16 +42,14 @@ class MainActivity : AppCompatActivity() {
                     if (textOperations.text.toString().isNotEmpty()) {
                         val expression = textOperations.text.toString().replace("x".toRegex(), "*")
                         val resp = evalExpression(expression)
-                        // Change this to send it to another activity...
                         val intent = Intent(this, ResultActivity::class.java)
                         intent.putExtra("resultado", resp)
                         startActivity(intent)
                     }
-                } else {
+                } else
                     showToast(getString(R.string.error_incomplete))
-                }
+
             } catch (exception: ArithmeticException) {
-                // Change this to send it to another activity...
                 showToast("Error: ${exception.message.toString()}")
             }
         }
@@ -60,9 +58,8 @@ class MainActivity : AppCompatActivity() {
             val config = resources.configuration
             if (config.locale == Locale.US) {
                 config.locale = Locale("es")
-            } else {
+            } else
                 config.locale = Locale.US
-            }
             resources.updateConfiguration(config, resources.displayMetrics)
             recreate()
         }
